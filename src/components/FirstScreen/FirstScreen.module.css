@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 79px 0;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 38%;
+    padding-top: 32px;
+}
+.mainImage {
+    display: flex;
+    align-items: center;
+    width: 38%;
+}
+.title {
+    font-size: 58px;
+    text-transform: uppercase;
+}
+.mainContent :nth-child(2) {
+    margin-bottom: 20px;
+}
+.title2 {
+    text-transform: uppercase;
+    font-size: 85px;
+    margin-bottom: 34px;
+}
+.title2.strong {
+    font-weight: 900;
+}
+.description {
+    font-size: 20px;
+    margin-bottom: 85px;
+}
+.mainContent button {
+    background: #2950EA;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 24px 61px;
+    color: #FFFFFF;
+    border: none;
+}

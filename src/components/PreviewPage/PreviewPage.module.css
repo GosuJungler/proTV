@@ -1,0 +1,135 @@
+.container {
+
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 67px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: #051B66;
+    height: 130px;
+}
+
+.content {
+    padding-top: 65px;
+    display: flex;
+    justify-content: space-between;
+}
+.demosBlock {
+    padding: 76px 120px 45px 200px;
+    width: 45%;
+    box-sizing: border-box;
+    background: #E9EAED;
+}
+.templateTypeButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 64px;
+}
+.templateTypeButton {
+    width: max-content;
+    border: none;
+    background: transparent;
+    font-size: 44px;
+    color: rgba(5, 27, 102, 0.45);
+    cursor: pointer;
+}
+.templateTypeButton:hover {
+    border-bottom: 2px solid #051B66;
+}
+.selectedTemplateType {
+    color: #051B66;
+    border-bottom: 2px solid #051B66;
+}
+.demosList {
+    height: 510px;
+    overflow: auto;
+    transform: scaleX(-1);
+}
+
+.previewBlock{
+    width: 48%;
+    padding-top: 5px;
+}
+.sizeButtons{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 63px;
+    max-width: 735px;
+    box-sizing: border-box;
+    margin-bottom: 66px;
+}
+
+.sizeButton {
+    padding: 19px 39px;
+    border: 1px solid #2950EA;
+    color: #2950EA;
+    font-size: 20px;
+    cursor: pointer;
+}
+.sizeButton:hover {
+    background: rgba(111, 140, 245, 0.25);
+}
+
+.desktopBlock {
+    margin-bottom: 75px;
+    max-width: 735px;
+    width: 81%;
+}
+.desktopImage {
+    width: 100%;
+}
+.iframeButtons {
+    max-width: 735px;
+    width: 81%;
+    display: flex;justify-content: center;
+}
+.iframeButton {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #051B66;
+    width: 190px;
+}
+.iframeButtonImage {
+    margin-right: 10.5px;
+}
+
+.demoItem {
+    font-size: 25px;
+    color: rgba(108, 108, 108, 1);
+    transform: scaleX(-1);
+    padding-left: 27px;
+    cursor: pointer;
+}
+.selectedDemoItem {
+    color: rgba(0, 0, 0, 1);
+}
+.demoItem:not(:last-child) {
+    margin-bottom: 42px;
+}
+.demosList::-webkit-scrollbar {
+    width: 1.04vw;
+    border: 2px solid #E3EDF1;
+}
+
+/* Track */
+.demosList::-webkit-scrollbar-track {
+    background: #FFFFFF;
+    border: 2px solid #E3EDF1;
+}
+
+/* Handle */
+.demosList::-webkit-scrollbar-thumb {
+    height: 7vw;
+    width: 0.94vw;
+    border-radius: 4px;
+    background: #20A3C5;
+}
+
+/* Handle on hover */
+.demosList::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
