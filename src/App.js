@@ -7,7 +7,6 @@ import PreviewPage from "./components/PreviewPage/PreviewPage";
 
 function App() {
   const [selectedADS, setSelectedADS] = useState(0)
-  const [selectedSize, setSelectedSize] = useState(0)
   const [selectedPricing, setSelectedPricing] = useState(0)
   const [selectedSizeDesktop, setSelectedSizeDesktop] = useState(0)
   const [selectedSizeMobile, setSelectedSizeMobile] = useState(0)
@@ -19,9 +18,6 @@ function App() {
   const updateSelectedDemo = (value) => {
     setSelectedDemo(value)
   }
-  const updateSelectedSize = (value) => {
-    setSelectedSize(value)
-  }
   const updateSelectedPricing = (value) => {
     setSelectedPricing(value)
   }
@@ -29,17 +25,19 @@ function App() {
     setSelectedSizeDesktop(value)
   }
   const updateSelectedSizeMobile = (value) => {
+    console.log(value)
     setSelectedSizeMobile(value)
   }
 
   return (
     <MyContext.Provider value={{
-      selectedADS, selectedDemo, selectedPricing, selectedSize, selectedSizeDesktop, setSelectedSizeMobile, updateSelectedADS, updateSelectedDemo, updateSelectedPricing, updateSelectedSize, updateSelectedSizeDesktop, updateSelectedSizeMobile
+      selectedADS, selectedDemo, selectedPricing, selectedSizeDesktop, selectedSizeMobile, setSelectedSizeMobile, updateSelectedADS, updateSelectedDemo, updateSelectedPricing, updateSelectedSizeDesktop, updateSelectedSizeMobile
     }}>
       <div className="App">
         <Header/>
         <FirstScreen/>
         <PreviewPage variant={0}/>
+        <PreviewPage variant={1}/>
       </div>
     </MyContext.Provider>
   );

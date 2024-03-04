@@ -1,5 +1,5 @@
 .container {
-
+    margin-bottom: 105px;
 }
 .title {
     display: flex;
@@ -16,6 +16,9 @@
     padding-top: 65px;
     display: flex;
     justify-content: space-between;
+}
+.contentReverse {
+    flex-direction: row-reverse;
 }
 .demosBlock {
     padding: 76px 120px 45px 200px;
@@ -100,6 +103,7 @@
     font-size: 20px;
     color: #051B66;
     width: 190px;
+    cursor: pointer;
 }
 .iframeButtonImage {
     margin-right: 10.5px;

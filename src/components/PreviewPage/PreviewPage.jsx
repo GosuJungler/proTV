@@ -11,18 +11,28 @@ const PreviewPage = ({variant}) => {
   const {
     selectedDemo,
     selectedPricing,
-    selectedSize,
-    updateSelectedSize,
+    selectedSizeDesktop,
+    selectedSizeMobile,
+    updateSelectedSizeDesktop,
+    updateSelectedSizeMobile,
     updateSelectedPricing,
     updateSelectedDemo
   } = useMyContext()
+
+  const handleSelectedSizeChange = (value) => {
+    if (!variant) {
+      updateSelectedSizeDesktop(value)
+    } else {
+      updateSelectedSizeMobile(value)
+    }
+  }
 
   return (
     <div className={classes.container}>
       <div className={classes.title}>
         {!variant ? 'DESKTOP ADS' : 'MOBILE ADS'}
       </div>
-      <div className={classes.content}>
+      <div className={classes.content + ' ' + (variant ? classes.contentReverse : '')}>
         <div className={classes.demosBlock}>
           <div
             className={classes.templateTypeButtons}
@@ -50,17 +60,17 @@ const PreviewPage = ({variant}) => {
         <div className={classes.previewBlock}>
           <div className={classes.sizeButtons}>
             <div
-              className={classes.sizeButton + ' ' + (selectedSize === 0 ? classes.selectedSizeButton : '')}
-              onClick={() => updateSelectedSize(0)}
+              className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 0 || variant && selectedSizeMobile === 0 ? classes.selectedSizeButton : '')}
+              onClick={() => handleSelectedSizeChange(0)}
             >300x600
             </div>
             {!variant && <div
-              className={classes.sizeButton + ' ' + (selectedSize === 1 ? classes.selectedSizeButton : '')}
-              onClick={() => updateSelectedSize(1)}
+              className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 1 ? classes.selectedSizeButton : '')}
+              onClick={() => handleSelectedSizeChange(1)}
             >970x250</div>}
             <div
-              className={classes.sizeButton + ' ' + (selectedSize === 2 ? classes.selectedSizeButton : '')}
-              onClick={() => updateSelectedSize(2)}
+              className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 2 || variant && selectedSizeMobile === 2 ? classes.selectedSizeButton : '')}
+              onClick={() => handleSelectedSizeChange(2)}
             >300x250
             </div>
           </div>
