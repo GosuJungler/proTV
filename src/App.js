@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./components/UI/Header/Header";
 import FirstScreen from "./components/FirstScreen/FirstScreen";
 import MyContext from "./Context";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import PreviewPage from "./components/PreviewPage/PreviewPage";
 
 function App() {
@@ -11,9 +11,13 @@ function App() {
   const [selectedPricing, setSelectedPricing] = useState(0)
   const [selectedSizeDesktop, setSelectedSizeDesktop] = useState(0)
   const [selectedSizeMobile, setSelectedSizeMobile] = useState(0)
+  const [selectedDemo, setSelectedDemo] = useState({name: 'RichBox - 50:50', id: 0})
 
   const updateSelectedADS = (value) => {
     setSelectedADS(value)
+  }
+  const updateSelectedDemo = (value) => {
+    setSelectedDemo(value)
   }
   const updateSelectedSize = (value) => {
     setSelectedSize(value)
@@ -30,7 +34,7 @@ function App() {
 
   return (
     <MyContext.Provider value={{
-      selectedADS, selectedPricing, selectedSize, selectedSizeDesktop, setSelectedSizeMobile, updateSelectedADS, updateSelectedPricing, updateSelectedSize, updateSelectedSizeDesktop, updateSelectedSizeMobile
+      selectedADS, selectedDemo, selectedPricing, selectedSize, selectedSizeDesktop, setSelectedSizeMobile, updateSelectedADS, updateSelectedDemo, updateSelectedPricing, updateSelectedSize, updateSelectedSizeDesktop, updateSelectedSizeMobile
     }}>
       <div className="App">
         <Header/>

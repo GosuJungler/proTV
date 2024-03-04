@@ -1,0 +1,16 @@
+export const DEMOS = [
+  {name: 'RichBox - 50:50', id: 0},
+  {name: 'RichBox - Animated Products Ingredient', id: 1},
+  {name: 'RichBox - 50:50', id: 2},
+  {name: 'RichBox - Animated Products Ingredient', id: 3},
+  {name: 'RichBox - 50:50', id: 4},
+  {name: 'RichBox - Animated Products Ingredient', id: 5},
+  {name: 'RichBox - 50:50', id: 6},
+  {name: 'RichBox - Animated Products Ingredient', id: 7},
+  {name: 'RichBox - 50:50', id: 8},
+  {name: 'RichBox - Animated Products Ingredient', id: 9},
+  {name: 'RichBox - 50:50', id: 10},
+  {name: 'RichBox - Animated Products Ingredient', id: 11},
+  {name: 'RichBox - 50:50', id: 12},
+  {name: 'RichBox - Animated Products Ingredient', id: 13},
+]

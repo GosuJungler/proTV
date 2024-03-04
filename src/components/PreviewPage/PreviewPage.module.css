@@ -36,7 +36,11 @@
     color: rgba(5, 27, 102, 0.45);
     cursor: pointer;
 }
-.templateTypeButton:hover {
+.selectedTemplateTypeButton {
+    color: #051B66;
+    border-bottom: 2px solid #051B66;
+}
+.templateTypeButton:not(.selectedTemplateTypeButton):hover {
     border-bottom: 2px solid #051B66;
 }
 .selectedTemplateType {
@@ -69,7 +73,11 @@
     font-size: 20px;
     cursor: pointer;
 }
-.sizeButton:hover {
+.selectedSizeButton {
+    background: rgba(41, 80, 234, 1);
+    color: rgba(255, 255, 255, 1);
+}
+.sizeButton:not(.selectedSizeButton):hover {
     background: rgba(111, 140, 245, 0.25);
 }
 
