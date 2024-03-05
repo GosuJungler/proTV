@@ -188,10 +188,9 @@ const PreviewPage = ({variant}) => {
               style={{padding: !variant ? '25px' : '0'}}
             >
               <div
-                style={{marginRight: variant ? '25px' : '0'}}
                 className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 0 || variant && selectedSizeMobile === 0 ? classes.selectedSizeButton : '')}
                 onClick={() => handleSelectedSizeChange(0)}
-                style={{opacity: selectedDemo.link300x600 ? 1 : 0.65, pointerEvents: selectedDemo.link300x600 ? 'auto' : 'none'}}
+                style={{marginRight: variant ? '25px' : '0', opacity: selectedDemo.link300x600 ? 1 : 0.65, pointerEvents: selectedDemo.link300x600 ? 'auto' : 'none'}}
               >300x600
               </div>
               {!variant && <div
