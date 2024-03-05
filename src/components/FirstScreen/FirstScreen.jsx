@@ -22,7 +22,7 @@ const FirstScreen = () => {
             Instrumente de publicitate tehnologică pentru videoclipuri și bogate, cu un efect unic pentru îmbunătățirea
             vizibilității și a brandingului În aplicația Kerkida.
           </div>
-          <button>
+          <button className={classes.mainButton}>
             VEZI MAI MULT
           </button>
         </div>

@@ -21,7 +21,7 @@
     flex-direction: row-reverse;
 }
 .demosBlock {
-    padding: 76px 120px 45px 200px;
+    padding: 4% 6.3% 2.4% 10.5%;
     width: 45%;
     box-sizing: border-box;
     background: #E9EAED;
@@ -60,9 +60,15 @@
     width: 48%;
     padding-top: 5px;
 }
+.previewBlockMobile {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: end;
+}
 .sizeButtons{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0 63px;
     max-width: 735px;
     box-sizing: border-box;
@@ -88,14 +94,26 @@
     margin-bottom: 75px;
     max-width: 735px;
     width: 81%;
+    position: relative;
 }
 .desktopImage {
     width: 100%;
+}
+.mobileBlock {
+    max-width: 735px;
+    position: relative;
+    width: 33.9%;
 }
 .iframeButtons {
     max-width: 735px;
     width: 81%;
     display: flex;justify-content: center;
+}
+.iframeButtonsMobile {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 28%;
 }
 .iframeButton {
     display: flex;
@@ -144,4 +162,28 @@
 /* Handle on hover */
 .demosList::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+.previewWrapper {
+    width: 100%;
+}
+.previewWrapperMobile {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.desktopIframe {
+    position: absolute;
+    top: 5.3%;
+    left: 11.1%;
+    width: 77.8%;
+    height: 78%;
+}
+.mobileIframe {
+    position: absolute;
+    top: 14.2%;
+    left: 4.7%;
+    width: 90.2%;
+    height: 83%;
+    border-bottom-left-radius: 9%;
+    border-bottom-right-radius: 9%;
 }

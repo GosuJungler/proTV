@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
+  <title>Document</title>
+  <style>
+    html {
+      overflow: hidden;
+    }
+    body {
+      margin: 0;
+    }
+    .header {
+      width: 100%;
+    }
+    .body {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img class="header" src="assets/pro-tv-header.png">
+  <div id="somploTag" style="
+        position: absolute;
+        top: 14%;
+        right: 40%;
+
+    ">
+    <smoplotag tagid='%%tag_id%%' width="300" height="600" prop='none' type='banner' autoexpand="false"
+               prod='true' tagtype='js' clickMacro='' close_Button='false' imp='' clickUrl='' platform=''
+               CACHEBUSTER='%%CACHEBUSTER%%' style="width: 100%!important;">
+      <script>
+        function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        
+        document.querySelector('smoplotag').setAttribute('tagid', getParameterByName('demoid'));
+      
+      </script>
+      <script src='https://cdn.somplo.com/prod/test/251119/new-tag.min.js?cb=8'></script>
+    </smoplotag>
+  
+  </div>
+  <img class="body" src="assets/300x600-body.png">
+</div>
+<script>
+  
+  var finel = 1;
+  function getScale(shouldnduseAgain = false){
+    const somploTag = document.querySelector('#somploTag')
+    // we check by this element current creative size
+    
+    const bodyWidth = document.body.offsetWidth
+    const calculatedWidth = (bodyWidth / 100 * 31) + (publisher_config.width * 3.3)
+    // (left-hand expression) here we have images for demo page with 52% and add 20 percentage for beautiful UI (bodyWidth / 100 * 72)
+    // (right-hand expression) here we have creative width multiple by 2 to take into consideration that banner have to be in right top angle of page and offset left side of page to save proportion (publisher_config.width * 2)
+    // this piece can be different for other sizes
+    
+    
+    if (bodyWidth <= calculatedWidth) {
+      // we check is body less than calculated width of image and creative with indents
+      
+      finel = bodyWidth / calculatedWidth * 100;
+      // calculating size difference and set factor
+      
+      somploTag.style.transform = "scale("+ finel * 0.01 + ")";
+      somploTag.style.transformOrigin = "right top";
+      somploTag.style.position = "absolute";
+      somploTag.style.right = "13.5%";
+      somploTag.style.margin = "0 auto";
+      
+      if(!shouldnduseAgain){
+        setTimeout(function () {
+          getScale(true);
+        }, 500)
+      }
+    }
+  }
+  getScale();
+  window.addEventListener("resize", getScale);
+</script>
+</body>
+</html>

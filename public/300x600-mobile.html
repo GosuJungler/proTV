@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
+  <title>Document</title>
+  <style>
+    html {
+    }
+    body {
+      margin: 0;
+    }
+    .header {
+      width: 100%;
+    }
+    .body {
+      width: 100%;
+      margin-top: 184%;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img class="header" src="assets/300x600-mobile-header.png">
+  <div id="somploTag" style="
+        position: absolute;
+        top: 142.5px;
+        right: 40%;
+
+    ">
+    <smoplotag tagid='%%tag_id%%' width="300" height="600" prop='none' type='banner' autoexpand="false"
+               prod='true' tagtype='js' clickMacro='' close_Button='false' imp='' clickUrl='' platform=''
+               CACHEBUSTER='%%CACHEBUSTER%%' style="width: 100%!important;">
+      <script>
+        function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        
+        document.querySelector('smoplotag').setAttribute('tagid', getParameterByName('demoid'));
+      
+      </script>
+      <script src='https://cdn.somplo.com/prod/test/251119/new-tag.min.js?cb=8'></script>
+    </smoplotag>
+  
+  </div>
+  <img class="body" src="assets/mobile-body.png">
+</div>
+<script>
+  
+  var finel = 1;
+  function getScale(shouldnduseAgain = false){
+    const somploTagContainerEl = document.querySelector('#somploTag')
+    // we check by this element current creative size
+    if (somploTagContainerEl.offsetWidth <= publisher_config.width) {
+      // we check is element less than creative size
+      
+      finel = somploTagContainerEl.offsetWidth / publisher_config.width * 100;
+      // calculating size difference and set factor
+      
+      document.getElementById('somploTag').style.transform = "scale("+ finel * 0.01 + ")";
+      document.getElementById('somploTag').style.transformOrigin = "left top";
+      document.getElementById('somploTag').style.position = "absolute";
+      document.getElementById('somploTag').style.right = "0";
+      document.getElementById('somploTag').style.left = "0";
+      document.getElementById('somploTag').style.margin = "90px auto 0";
+      
+      somploTagContainerEl.style.width = "92%";
+      // width can be different for other sizes, it depends on UI of demo
+      
+      if (!shouldnduseAgain) {
+        setTimeout(function () {
+          getScale(true);
+        }, 500)
+      }
+    } else {
+      document.getElementById('somploTag').style.transform = "unset";
+      document.getElementById('somploTag').style.transformOrigin = "unset";
+    }
+  }
+  getScale();
+  window.addEventListener("resize", getScale);
+</script>
+</body>
+</html>

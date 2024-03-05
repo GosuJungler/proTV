@@ -43,4 +43,8 @@
     padding: 24px 61px;
     color: #FFFFFF;
     border: none;
+    cursor: pointer;
+}
+.mainButton:hover {
+    background: #3D57C9FF;
 }

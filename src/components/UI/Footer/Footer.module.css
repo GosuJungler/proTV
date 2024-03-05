@@ -1,0 +1,11 @@
+.container {
+    background: rgba(38, 38, 38, 1);
+    height: 193px;
+    padding-left: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.smoploIcon{
+    width: 129px;
+}
