@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ViewSwitcher from "../UI/ViewSwitcher/ViewSwitcher";
 import firstScreenImage from '../../assets/first-screen-image.png'
+import firstScreenImageMobile from '../../assets/first-screen-mobile.png'
 import classes from "./FirstScreen.module.css";
+import {useMyContext} from "../../Context";
 
 const FirstScreen = () => {
+  const {isDesktop} = useMyContext()
+
   return (
     <div>
       <ViewSwitcher/>
@@ -29,7 +33,7 @@ const FirstScreen = () => {
         <div className={classes.mainImage}>
           <img
             width={'100%'}
-            src={firstScreenImage}
+            src={isDesktop ? firstScreenImage : firstScreenImageMobile}
             alt=""
           />
         </div>

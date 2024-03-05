@@ -6,6 +6,7 @@ import refresh from '../../assets/refresh.png'
 import openLink from '../../assets/open-link.png'
 import {useMyContext} from "../../Context";
 import {DEMOS} from "../../consts";
+import linkImageWhite from '../../assets/link-image-white.png'
 
 const PreviewPage = ({variant}) => {
 
@@ -17,6 +18,7 @@ const PreviewPage = ({variant}) => {
   const mobileIframeRef = useRef(null);
 
   const {
+    isDesktop,
     selectedDemo,
     selectedPricingDesktop,
     selectedSizeDesktop,
@@ -48,6 +50,23 @@ const PreviewPage = ({variant}) => {
   const handleNewWindowClick = () => {
     const currentId = !variant ? desktopDemoLink : mobileDemoLink
     window.open('https://demo.somplo.com/demo/' + getDemoId(currentId, '='), '_blank');
+  }
+
+  const handleDemoOpen = (demoType) => {
+    switch (demoType) {
+      case 0:
+        if (!selectedDemo.link300x600) return
+        window.open(selectedDemo.link300x600, '_blank');
+        break
+      case 1:
+        if (!selectedDemo.link300x250) return;
+        window.open(selectedDemo.link300x250, '_blank');
+        break
+      case 2:
+        if (!selectedDemo.link970x250) return;
+        window.open(selectedDemo.link970x250, '_blank');
+        break
+    }
   }
 
   const getDemoId = (link, separator = '/') => {
@@ -114,9 +133,12 @@ const PreviewPage = ({variant}) => {
   }, [demosMobile])
 
   return (
-    <div className={classes.container} id={`${!variant ? 'desktopScreen' : 'mobileScreen'}`}>
+    <div
+      className={classes.container}
+      id={`${!variant ? 'desktopScreen' : 'mobileScreen'}`}
+    >
       <div className={classes.title}>
-        {!variant ? 'DESKTOP ADS' : 'MOBILE ADS'}
+        {!variant && isDesktop ? 'DESKTOP ADS' : variant && isDesktop ? 'MOBILE ADS' : 'MOBILE & DESKTOP ADS'}
       </div>
       <div className={classes.content + ' ' + (variant ? classes.contentReverse : '')}>
         <div className={classes.demosBlock}>
@@ -151,78 +173,98 @@ const PreviewPage = ({variant}) => {
             }
           </div>
         </div>
-        <div className={`${classes.previewBlock} ${variant ? classes.previewBlockMobile : ''}`}>
-          <div
-            className={classes.sizeButtons}
-            style={{padding: !variant ? '25px' : 0}}
-          >
+        {isDesktop &&
+          <div className={`${classes.previewBlock} ${variant ? classes.previewBlockMobile : ''}`}>
             <div
-              style={{marginRight: variant ? '25px' : 0}}
-              className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 0 || variant && selectedSizeMobile === 0 ? classes.selectedSizeButton : '')}
-              onClick={() => handleSelectedSizeChange(0)}
-            >300x600
-            </div>
-            {!variant && <div
-              className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 1 ? classes.selectedSizeButton : '')}
-              onClick={() => handleSelectedSizeChange(1)}
-            >970x250</div>}
-            {!!variant &&
+              className={classes.sizeButtons}
+              style={{padding: !variant ? '25px' : 0}}
+            >
               <div
-                className={classes.sizeButton + ' ' + (variant && selectedSizeMobile === 2 ? classes.selectedSizeButton : '')}
-                onClick={() => handleSelectedSizeChange(2)}
-              >300x250</div>
-            }
-          </div>
-          <div className={`${classes.previewWrapper} ${variant ? classes.previewWrapperMobile : ''}`}>
-            <div className={!variant ? classes.desktopBlock : classes.mobileBlock}>
-              <img
-                className={classes.desktopImage}
-                src={!variant ? desktopImage : mobileImage}
-                alt=""
-              />
-              {!variant ?
-                <iframe
-                  ref={desktopIframeRef}
-                  className={classes.desktopIframe}
-                  src={desktopDemoLink}
-                  frameBorder="0"
-                ></iframe>
-                :
-                <iframe
-                  ref={mobileIframeRef}
-                  className={classes.mobileIframe}
-                  src={mobileDemoLink}
-                  frameBorder="0"
-                ></iframe>
+                style={{marginRight: variant ? '25px' : 0}}
+                className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 0 || variant && selectedSizeMobile === 0 ? classes.selectedSizeButton : '')}
+                onClick={() => handleSelectedSizeChange(0)}
+              >300x600
+              </div>
+              {!variant && <div
+                className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 1 ? classes.selectedSizeButton : '')}
+                onClick={() => handleSelectedSizeChange(1)}
+              >970x250</div>}
+              {!!variant &&
+                <div
+                  className={classes.sizeButton + ' ' + (variant && selectedSizeMobile === 2 ? classes.selectedSizeButton : '')}
+                  onClick={() => handleSelectedSizeChange(2)}
+                >300x250</div>
               }
             </div>
-            <div className={`${classes.iframeButtons} ${variant ? classes.iframeButtonsMobile : ''}`}>
-              <div
-                className={classes.iframeButton}
-                onClick={handleReloadClick}
-              >
+            <div className={`${classes.previewWrapper} ${variant ? classes.previewWrapperMobile : ''}`}>
+              <div className={!variant ? classes.desktopBlock : classes.mobileBlock}>
                 <img
-                  src={refresh}
+                  className={classes.desktopImage}
+                  src={!variant ? desktopImage : mobileImage}
                   alt=""
-                  className={classes.iframeButtonImage}
                 />
-                Refresh
+                {!variant ?
+                  <iframe
+                    ref={desktopIframeRef}
+                    className={classes.desktopIframe}
+                    src={desktopDemoLink}
+                    frameBorder="0"
+                  ></iframe>
+                  :
+                  <iframe
+                    ref={mobileIframeRef}
+                    className={classes.mobileIframe}
+                    src={mobileDemoLink}
+                    frameBorder="0"
+                  ></iframe>
+                }
               </div>
-              <div
-                className={classes.iframeButton}
-                onClick={handleNewWindowClick}
-              >
-                <img
-                  src={openLink}
-                  alt=""
-                  className={classes.iframeButtonImage}
-                />
-                New Window
+              <div className={`${classes.iframeButtons} ${variant ? classes.iframeButtonsMobile : ''}`}>
+                <div
+                  className={classes.iframeButton}
+                  onClick={handleReloadClick}
+                >
+                  <img
+                    src={refresh}
+                    alt=""
+                    className={classes.iframeButtonImage}
+                  />
+                  Refresh
+                </div>
+                <div
+                  className={classes.iframeButton}
+                  onClick={handleNewWindowClick}
+                >
+                  <img
+                    src={openLink}
+                    alt=""
+                    className={classes.iframeButtonImage}
+                  />
+                  New Window
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        }
       </div>
+      {!isDesktop &&
+        <>
+          <div className={classes.linksContainer}>
+            <button onClick={() => handleDemoOpen(0)} className={classes.linkItem}><span>300x600</span><span className={classes.linkButton}>New Window <img
+              src={linkImageWhite}
+              alt=""
+            /></span></button>
+            <button onClick={() => handleDemoOpen(1)} className={classes.linkItem}><span>300x250</span><span className={classes.linkButton}>New Window <img
+              src={linkImageWhite}
+              alt=""
+            /></span></button>
+            <button onClick={() => handleDemoOpen(2)} className={classes.linkItem}><span>970x250</span><span className={classes.linkButton}>New Window <img
+              src={linkImageWhite}
+              alt=""
+            /></span></button>
+          </div>
+        </>
+      }
     </div>
   );
 };

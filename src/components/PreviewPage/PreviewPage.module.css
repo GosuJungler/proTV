@@ -153,10 +153,9 @@
 
 /* Handle */
 .demosList::-webkit-scrollbar-thumb {
-    height: 7vw;
+    height: 97px;
     width: 0.94vw;
-    border-radius: 4px;
-    background: #20A3C5;
+    background: rgba(41, 80, 234, 1);
 }
 
 /* Handle on hover */
@@ -186,4 +185,64 @@
     height: 83%;
     border-bottom-left-radius: 9%;
     border-bottom-right-radius: 9%;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .title {
+        font-size: 27px;
+    }
+    .demosBlock {
+        width: 100%;
+        padding: 9.6% 9.6% 11.9% 7.5%;
+    }
+    .templateTypeButton {
+        font-size: 27px;
+    }
+    .demoItem {
+        font-size: 16px;
+    }
+    .demoItem:not(:last-child) {
+        margin-bottom: 26.4px;
+    }
+    .demosList {
+        height: 286px;
+    }
+    .templateTypeButtons {
+        margin-bottom: 31px;
+    }
+    .demosList::-webkit-scrollbar {
+        width: 6.88px;
+    }
+    .demosList::-webkit-scrollbar-thumb {
+        height: 55px;
+    }
+    .linksContainer {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .linkItem {
+        width: 90%;
+        background: rgba(41, 80, 234, 1);
+        color: white;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+        border: none;
+        cursor: pointer;
+    }
+    .linkButton {
+        display: flex;
+        align-items: center;
+    }
+    .linkItem:not(:last-child) {
+        margin-bottom: 14px;
+    }
+    .container {
+        margin-bottom: 63px;
+    }
 }

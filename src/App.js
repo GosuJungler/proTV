@@ -20,6 +20,7 @@ function App() {
     link300x250: 'https://demo.somplo.com/demo/480651940',
     link970x250: 'https://demo.somplo.com/demo/760729125',
   })
+  const [isDesktop, setIsDesktop] = useState(true)
 
   const updateSelectedADS = (value) => {
     setSelectedADS(value)
@@ -40,15 +41,40 @@ function App() {
     setSelectedSizeMobile(value)
   }
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1200) {
+        setIsDesktop(false)
+      } else {
+        setIsDesktop(true)
+      }
+    };
+    handleResize()
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <MyContext.Provider value={{
-      selectedADS, selectedDemo, selectedPricingDesktop, selectedSizeDesktop, selectedSizeMobile, setSelectedSizeMobile, selectedPricingMobile, setSelectedPricingMobile, updateSelectedADS, updateSelectedDemo, updateSelectedPricingDesktop, updateSelectedPricingMobile, updateSelectedSizeDesktop, updateSelectedSizeMobile
+      selectedADS, selectedDemo, selectedPricingDesktop, selectedSizeDesktop, selectedSizeMobile, setSelectedSizeMobile, selectedPricingMobile, setSelectedPricingMobile, isDesktop, updateSelectedADS, updateSelectedDemo, updateSelectedPricingDesktop, updateSelectedPricingMobile, updateSelectedSizeDesktop, updateSelectedSizeMobile
     }}>
       <div className="App">
         <Header/>
         <FirstScreen/>
-        <PreviewPage variant={0}/>
-        <PreviewPage variant={1}/>
+        {isDesktop &&
+          <>
+            <PreviewPage variant={0}/>
+            <PreviewPage variant={1}/>
+          </>
+        }
+        {
+          !isDesktop &&
+          <PreviewPage variant={null}/>
+        }
         <Footer/>
       </div>
     </MyContext.Provider>
