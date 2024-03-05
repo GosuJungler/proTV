@@ -8,6 +8,9 @@ import {useMyContext} from "../../Context";
 const FirstScreen = () => {
   const {isDesktop} = useMyContext()
 
+  const handleScrollClick = () => {
+    document.querySelector('#desktopScreen').scrollIntoView({ behavior: 'smooth'})
+  }
   return (
     <div>
       <ViewSwitcher/>
@@ -26,7 +29,7 @@ const FirstScreen = () => {
             Instrumente de publicitate tehnologică pentru videoclipuri și bogate, cu un efect unic pentru îmbunătățirea
             vizibilității și a brandingului În aplicația Kerkida.
           </div>
-          <button className={classes.mainButton}>
+          <button onClick={handleScrollClick} className={classes.mainButton}>
             VEZI MAI MULT
           </button>
         </div>

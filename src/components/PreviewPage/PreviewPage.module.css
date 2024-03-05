@@ -246,3 +246,8 @@
         margin-bottom: 63px;
     }
 }
+
+.disabledSizeButton {
+    pointer-events: none;
+    opacity: 0.65;
+}

@@ -527,12 +527,4 @@ export const DEMOS = [
     link300x250: 'https://demo.somplo.com/demo/755626648',
     link970x250: '',
   },
-  {
-    id: 66,
-    type: 1,
-    name: 'Interscroller',
-    link300x600: 'https://demo.somplo.com/demo/699766285',
-    link300x250: '',
-    link970x250: '',
-  },
 ]

@@ -41,9 +41,13 @@ const PreviewPage = ({variant}) => {
 
   const handleReloadClick = () => {
     if (!variant) {
-      desktopIframeRef?.current?.contentWindow?.location?.reload();
+      if (desktopIframeRef.current?.src) {
+        desktopIframeRef.current.src = '' + desktopIframeRef?.current.src
+      }
     } else {
-      mobileIframeRef?.current?.contentWindow?.location?.reload();
+      if (mobileIframeRef.current?.src) {
+        mobileIframeRef.current.src = '' + mobileIframeRef?.current.src
+      }
     }
   };
 
@@ -86,18 +90,22 @@ const PreviewPage = ({variant}) => {
     if (!variant) {
       switch (selectedSizeDesktop) {
         case 0:
+          if (!selectedDemo.link300x600) return
           setDesktopDemoLink('300x600.html?demoid=' + getDemoId(selectedDemo.link300x600))
           break
         case 1:
+          if (!selectedDemo.link970x250) return
           setDesktopDemoLink('970x250.html?demoid=' + getDemoId(selectedDemo.link970x250))
           break
       }
     } else {
       switch (selectedSizeMobile) {
         case 0:
+          if (!selectedDemo.link300x600) return
           setMobileDemoLink('300x600-mobile.html?demoid=' + getDemoId(selectedDemo.link300x600))
           break
         case 2:
+          if (!selectedDemo.link300x250) return
           setMobileDemoLink('300x250.html?demoid=' + getDemoId(selectedDemo.link300x250))
           break
       }
@@ -159,13 +167,13 @@ const PreviewPage = ({variant}) => {
             </button>
           </div>
           <div className={classes.demosList}>
-            {!variant && demosDesktop.map(demo => (<div
+            {!!!variant && demosDesktop.map(demo => (<div
               onClick={() => updateSelectedDemo(demo)}
               key={demo.id}
               className={classes.demoItem + ' ' + (selectedDemo.id === demo.id ? classes.selectedDemoItem : '')}
             >{demo.name}</div>))
             }
-            {variant && demosMobile.map(demo => (<div
+            {!!variant && demosMobile.map(demo => (<div
               onClick={() => updateSelectedDemo(demo)}
               key={demo.id}
               className={classes.demoItem + ' ' + (selectedDemo.id === demo.id ? classes.selectedDemoItem : '')}
@@ -177,22 +185,25 @@ const PreviewPage = ({variant}) => {
           <div className={`${classes.previewBlock} ${variant ? classes.previewBlockMobile : ''}`}>
             <div
               className={classes.sizeButtons}
-              style={{padding: !variant ? '25px' : 0}}
+              style={{padding: !variant ? '25px' : '0'}}
             >
               <div
-                style={{marginRight: variant ? '25px' : 0}}
+                style={{marginRight: variant ? '25px' : '0'}}
                 className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 0 || variant && selectedSizeMobile === 0 ? classes.selectedSizeButton : '')}
                 onClick={() => handleSelectedSizeChange(0)}
+                style={{opacity: selectedDemo.link300x600 ? 1 : 0.65, pointerEvents: selectedDemo.link300x600 ? 'auto' : 'none'}}
               >300x600
               </div>
               {!variant && <div
                 className={classes.sizeButton + ' ' + (!variant && selectedSizeDesktop === 1 ? classes.selectedSizeButton : '')}
                 onClick={() => handleSelectedSizeChange(1)}
+                style={{opacity: selectedDemo.link970x250 ? 1 : 0.65, pointerEvents: selectedDemo.link970x250 ? 'auto' : 'none'}}
               >970x250</div>}
               {!!variant &&
                 <div
                   className={classes.sizeButton + ' ' + (variant && selectedSizeMobile === 2 ? classes.selectedSizeButton : '')}
                   onClick={() => handleSelectedSizeChange(2)}
+                  style={{opacity: selectedDemo.link300x250 ? 1 : 0.65, pointerEvents: selectedDemo.link300x250 ? 'auto' : 'none'}}
                 >300x250</div>
               }
             </div>
@@ -223,6 +234,7 @@ const PreviewPage = ({variant}) => {
                 <div
                   className={classes.iframeButton}
                   onClick={handleReloadClick}
+                  id={'refresh-button'}
                 >
                   <img
                     src={refresh}

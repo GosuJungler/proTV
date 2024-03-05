@@ -16,13 +16,11 @@ const ViewSwitcher = () => {
     <div className={classes.container}>
       <div
         className={classes.viewItem}
-        style={{color: !selectedADS ? '#FFFFFF' : ''}}
         onClick={() => handleScrollClick(0)}
       >DESKTOP ADS
       </div>
       <div
         className={classes.viewItem}
-        style={{color: selectedADS ? '#FFFFFF' : ''}}
         onClick={() => handleScrollClick(1, false)}
       >MOBILE ADS
       </div>
