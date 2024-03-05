@@ -6,18 +6,24 @@ const ViewSwitcher = () => {
 
   const {selectedADS, updateSelectedADS} = useMyContext()
 
+  const handleScrollClick = (value, isDesk = true) => {
+    updateSelectedADS(value)
+    const selector = isDesk ? '#desktopScreen' : '#mobileScreen'
+    document.querySelector(selector).scrollIntoView({ behavior: 'smooth'})
+  }
+
   return (
     <div className={classes.container}>
       <div
         className={classes.viewItem}
         style={{color: !selectedADS ? '#FFFFFF' : ''}}
-        onClick={() => updateSelectedADS(0)}
+        onClick={() => handleScrollClick(0)}
       >DESKTOP ADS
       </div>
       <div
         className={classes.viewItem}
         style={{color: selectedADS ? '#FFFFFF' : ''}}
-        onClick={() => updateSelectedADS(1)}
+        onClick={() => handleScrollClick(1, false)}
       >MOBILE ADS
       </div>
     </div>

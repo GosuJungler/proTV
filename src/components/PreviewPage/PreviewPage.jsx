@@ -65,8 +65,7 @@ const PreviewPage = ({variant}) => {
 
   useEffect(() => {
     if (!variant) {
-      console.log(variant)
-      switch (selectedDemo) {
+      switch (selectedSizeDesktop) {
         case 0:
           setDesktopDemoLink('300x600.html?demoid=' + getDemoId(selectedDemo.link300x600))
           break
@@ -115,7 +114,7 @@ const PreviewPage = ({variant}) => {
   }, [demosMobile])
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} id={`${!variant ? 'desktopScreen' : 'mobileScreen'}`}>
       <div className={classes.title}>
         {!variant ? 'DESKTOP ADS' : 'MOBILE ADS'}
       </div>
