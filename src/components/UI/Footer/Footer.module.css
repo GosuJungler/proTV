@@ -9,3 +9,8 @@
 .smoploIcon{
     width: 129px;
 }
+@media screen and (max-width: 1200px) {
+    .container {
+        padding-left: 34px;
+    }
+}

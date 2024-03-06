@@ -36,6 +36,7 @@ const FirstScreen = () => {
         <div className={classes.mainImage}>
           <img
             width={'100%'}
+            className={classes.mainimageImg}
             src={isDesktop ? firstScreenImage : firstScreenImageMobile}
             alt=""
           />

@@ -62,7 +62,7 @@ function App() {
     <MyContext.Provider value={{
       selectedADS, selectedDemo, selectedPricingDesktop, selectedSizeDesktop, selectedSizeMobile, setSelectedSizeMobile, selectedPricingMobile, setSelectedPricingMobile, isDesktop, updateSelectedADS, updateSelectedDemo, updateSelectedPricingDesktop, updateSelectedPricingMobile, updateSelectedSizeDesktop, updateSelectedSizeMobile
     }}>
-      <div className="App">
+      <div className="App" style={{overflowX: 'hidden'}}>
         <Header/>
         <FirstScreen/>
         {isDesktop &&
