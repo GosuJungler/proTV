@@ -5,11 +5,13 @@ import smoploIcon from '../../../assets/smoplo-icon.png'
 const Footer = () => {
   return (
     <div className={classes.container}>
-      <img
-        src={smoploIcon}
-        alt=""
-        className={classes.smoploIcon}
-      />
+      <a href="https://somplo.com" target={'_blank'}>
+        <img
+          src={smoploIcon}
+          alt=""
+          className={classes.smoploIcon}
+        />
+      </a>
     </div>
   );
 };

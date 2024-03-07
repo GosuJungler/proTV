@@ -5,10 +5,15 @@ import logo from '../../../assets/Logo.png'
 const Header = () => {
   return (
     <div className={classes.container}>
-      <img
-        src={logo}
-        alt=""
-      />
+      <a
+        href="https://stirileprotv.ro/"
+        target={'_blank'}
+      >
+        <img
+          src={logo}
+          alt=""
+        />
+      </a>
     </div>
   );
 };
