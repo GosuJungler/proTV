@@ -10,7 +10,7 @@ import linkImageWhite from '../../assets/link-image-white.png'
 
 const PreviewPage = ({variant}) => {
 
-  const [demosDesktop, setDemosDesktop] = useState(DEMOS.filter(demo => !demo.type))
+  const [demosDesktop, setDemosDesktop] = useState(DEMOS.filter(demo => !demo.type && demo.id !== 66))
   const [demosMobile, setDemosMobile] = useState(DEMOS.filter(demo => !demo.type))
   const [desktopDemoLink, setDesktopDemoLink] = useState()
   const [mobileDemoLink, setMobileDemoLink] = useState()
@@ -91,10 +91,12 @@ const PreviewPage = ({variant}) => {
       switch (selectedSizeDesktop) {
         case 0:
           if (!selectedDemo.link300x600) return
+          setDemosDesktop(DEMOS.filter(demo => demo.type && demo.id !== 66))
           setDesktopDemoLink('300x600.html?demoid=' + getDemoId(selectedDemo.link300x600))
           break
         case 1:
           if (!selectedDemo.link970x250) return
+          setDemosDesktop(DEMOS.filter(demo => demo.type && demo.id !== 66 && demo.id !== 65))
           setDesktopDemoLink('970x250.html?demoid=' + getDemoId(selectedDemo.link970x250))
           break
       }
@@ -114,9 +116,9 @@ const PreviewPage = ({variant}) => {
 
   useEffect(() => {
     if (selectedPricingDesktop) {
-      setDemosDesktop(DEMOS.filter(demo => demo.type))
+      setDemosDesktop(DEMOS.filter(demo => demo.type && demo.id !== 66))
     } else {
-      setDemosDesktop(DEMOS.filter(demo => !demo.type))
+      setDemosDesktop(DEMOS.filter(demo => !demo.type && demo.id !== 66))
     }
   }, [selectedPricingDesktop]);
 
@@ -262,14 +264,20 @@ const PreviewPage = ({variant}) => {
         <>
           <div className={classes.linksContainer}>
             <button onClick={() => handleDemoOpen(0)} className={classes.linkItem}><span>300x600</span><span className={classes.linkButton}>New Window <img
+              width={'22.5px'}
+              style={{marginLeft: 15}}
               src={linkImageWhite}
               alt=""
             /></span></button>
             <button onClick={() => handleDemoOpen(1)} className={classes.linkItem}><span>300x250</span><span className={classes.linkButton}>New Window <img
+              width={'22.5px'}
+              style={{marginLeft: 15}}
               src={linkImageWhite}
               alt=""
             /></span></button>
-            <button onClick={() => handleDemoOpen(2)} className={classes.linkItem}><span>970x250</span><span className={classes.linkButton}>New Window <img
+            <button onClick={() => handleDemoOpen(2)} className={`${classes.linkItem}  ${classes.link970}`}><span>970x250</span><span className={classes.linkButton}>New Window <img
+              width={'22.5px'}
+              style={{marginLeft: 15}}
               src={linkImageWhite}
               alt=""
             /></span></button>

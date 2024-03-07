@@ -23,7 +23,7 @@ const FirstScreen = () => {
             Produse de la
           </div>
           <div className={classes.title2}>
-            Stirile <strong>pro・tv</strong>
+            Stirile <strong>pro·tv</strong>
           </div>
           <div className={classes.description}>
             Instrumente de publicitate tehnologică pentru videoclipuri și bogate, cu un efect unic pentru îmbunătățirea
