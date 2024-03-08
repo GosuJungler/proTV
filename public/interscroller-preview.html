@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
+  <title>Document</title>
+  <style>
+    .container::-webkit-scrollbar {
+      display: none;
+    }
+    html {
+    }
+    body {
+      margin: 0;
+    }
+    .header {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .body {
+      width: 100%;
+      margin-top: 184%;
+      position: relative;
+      z-index: 1;
+    }
+    smoplotag {
+      display: flex!important;
+      justify-content: center;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+    }
+    .overall-con {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      position: fixed;
+      top: 13.5vh;
+      height: 79.5%;
+      width: 20.2vw;
+      margin: 0 auto;
+      overflow-y: scroll;
+      border-bottom-left-radius: 10%;
+      border-bottom-right-radius: 10%;
+    }
+    #somploTag {
+      width: 15.7vw;
+      position: fixed;
+      top: 168px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="overall-con">
+  <img src="assets/mobile.png" style="width: auto; height: 95vh; ">
+  <div class="container">
+    <img class="header" src="assets/300x600-mobile-header.png">
+    <div id="somploTag" style="
+
+    ">
+      <smoplotag tagid='%%tag_id%%' width="300" height="600" prop='none' type='banner' autoexpand="false"
+                 prod='true' tagtype='js' clickMacro='' close_Button='false' imp='' clickUrl='' platform=''
+                 CACHEBUSTER='%%CACHEBUSTER%%' style="width: 100%!important;">
+        <script>
+          function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+          }
+          
+          document.querySelector('smoplotag').setAttribute('tagid', '219623495');
+        
+        </script>
+        <script src='https://cdn.somplo.com/prod/test/251119/new-tag.min.js?cb=8'></script>
+      </smoplotag>
+    
+    </div>
+    <img class="body" src="assets/mobile-body.png">
+  </div>
+</div>
+
+<script>
+  
+  var finel = 1;
+  function getScale(shouldnduseAgain = false){
+    const somploTagContainerEl = document.querySelector('#somploTag')
+    // we check by this element current creative size
+    if (somploTagContainerEl.offsetWidth <= publisher_config.width) {
+      // we check is element less than creative size
+      
+      finel = somploTagContainerEl.offsetWidth / publisher_config.width * 100;
+      // calculating size difference and set factor
+      
+      document.getElementById('somploTag').style.transform = "scale("+ finel * 0.01 + ")";
+      document.getElementById('somploTag').style.transformOrigin = "left top";
+      document.getElementById('somploTag').style.right = "0";
+      document.getElementById('somploTag').style.left = "0";
+      document.getElementById('somploTag').style.margin = "90px auto 0";
+      
+      somploTagContainerEl.style.width = "92%";
+      // width can be different for other sizes, it depends on UI of demo
+      
+      if (!shouldnduseAgain) {
+        setTimeout(function () {
+          getScale(true);
+        }, 500)
+      }
+    } else {
+    }
+  }
+  getScale();
+  window.addEventListener("resize", getScale);
+</script>
+</body>
+</html>

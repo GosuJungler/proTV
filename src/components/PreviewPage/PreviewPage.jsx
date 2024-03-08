@@ -10,6 +10,7 @@ import linkImageWhite from '../../assets/link-image-white.png'
 
 const PreviewPage = ({variant}) => {
 
+  const isMobile = window.innerWidth < 1200
   const [demosDesktop, setDemosDesktop] = useState(DEMOS.filter(demo => !demo.type && demo.id !== 66))
   const [demosMobile, setDemosMobile] = useState(DEMOS.filter(demo => !demo.type))
   const [desktopDemoLink, setDesktopDemoLink] = useState()
@@ -38,7 +39,7 @@ const PreviewPage = ({variant}) => {
           setDemosDesktop(DEMOS.filter(demo => demo.type === selectedPricingDesktop && demo.id !== 66))
           break
         case 1:
-          setDemosDesktop(DEMOS.filter(demo => demo.type === selectedPricingDesktop && demo.id !== 66 && demo.id !== 65))
+          setDemosDesktop(DEMOS.filter(demo => demo.type === selectedPricingDesktop && demo.id !== 66 && demo.id !== 65 && demo.id !== 51))
           break
       }
       updateSelectedSizeDesktop(value)
@@ -69,14 +70,26 @@ const PreviewPage = ({variant}) => {
 
   const handleNewWindowClick = () => {
     const currentId = !variant ? desktopDemoLink : mobileDemoLink
-    window.open('https://demo.somplo.com/demo/' + getDemoId(currentId, '='), '_blank');
+    const id = selectedDemo.link300x600.split('/')[selectedDemo.link300x600.split('/').length - 1]
+    if (id === '219623495')  {
+      !isMobile && window.open('interscroller-preview.html?demoid=' + id, '_blank');
+      isMobile && window.open('interscroller-preview-mobile.html?demoid=' + id, '_blank');
+    } else {
+      window.open('https://demo.somplo.com/demo/' + getDemoId(currentId, '='), '_blank');
+    }
   }
 
   const handleDemoOpen = (demoType) => {
     switch (demoType) {
       case 0:
         if (!selectedDemo.link300x600) return
-        window.open(selectedDemo.link300x600, '_blank');
+        const id = selectedDemo.link300x600.split('/')[selectedDemo.link300x600.split('/').length - 1]
+        if (id === '219623495')  {
+          !isMobile && window.open('interscroller-preview.html?demoid=' + id, '_blank');
+          isMobile && window.open('interscroller-preview-mobile.html?demoid=' + id, '_blank');
+        } else {
+          window.open(selectedDemo.link300x600, '_blank');
+        }
         break
       case 1:
         if (!selectedDemo.link300x250) return;
@@ -130,15 +143,15 @@ const PreviewPage = ({variant}) => {
 
   useEffect(() => {
     if (selectedPricingDesktop) {
-      setDemosDesktop(DEMOS.filter(demo => demo.type && demo.id !== 66))
+      setDemosDesktop(DEMOS.filter(demo => demo.type && (variant !== null ? demo.id !== 66 : true)))
     } else {
-      setDemosDesktop(DEMOS.filter(demo => !demo.type && demo.id !== 66))
+      setDemosDesktop(DEMOS.filter(demo => !demo.type && (variant !== null ? demo.id !== 66 : true)))
     }
   }, [selectedPricingDesktop]);
 
   useEffect(() => {
     if (selectedPricingMobile) {
-      setDemosMobile(DEMOS.filter(demo => demo.type))
+        setDemosMobile(DEMOS.filter(demo => demo.type))
     } else {
       setDemosMobile(DEMOS.filter(demo => !demo.type))
     }
@@ -279,11 +292,11 @@ const PreviewPage = ({variant}) => {
           <div className={classes.linksContainer}>
             <button onClick={() => handleDemoOpen(0)} className={classes.linkItem}><span>300x600</span><span className={classes.linkButton}>New Window <img
               width={'22.5px'}
-              style={{marginLeft: 15}}
+              style={{marginLeft: 15, opacity: selectedDemo.link300x600 ? 1 : 0.65}}
               src={linkImageWhite}
               alt=""
             /></span></button>
-            <button onClick={() => handleDemoOpen(1)} className={classes.linkItem}><span>300x250</span><span className={classes.linkButton}>New Window <img
+            <button onClick={() => handleDemoOpen(1)} className={classes.linkItem} style={{ opacity: selectedDemo.link300x250 ? 1 : 0.65}}><span>300x250</span><span className={classes.linkButton}>New Window <img
               width={'22.5px'}
               style={{marginLeft: 15}}
               src={linkImageWhite}

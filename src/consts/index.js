@@ -7,14 +7,14 @@ export const DEMOS = [
     link300x250: 'https://demo.somplo.com/demo/480651940',
     link970x250: 'https://demo.somplo.com/demo/760729125',
   },
-  {
-    id: 1,
-    type: 0,
-    name: 'Custom Banner',
-    link300x600: 'https://demo.somplo.com/demo/881962084',
-    link300x250: 'https://demo.somplo.com/demo/342870428',
-    link970x250: 'https://demo.somplo.com/demo/381518317',
-  },
+  // {
+  //   id: 1,
+  //   type: 0,
+  //   name: 'Custom Banner',
+  //   link300x600: 'https://demo.somplo.com/demo/881962084',
+  //   link300x250: 'https://demo.somplo.com/demo/342870428',
+  //   link970x250: 'https://demo.somplo.com/demo/381518317',
+  // },
   {
     id: 2,
     type: 0,
