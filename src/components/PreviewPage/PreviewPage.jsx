@@ -33,8 +33,24 @@ const PreviewPage = ({variant}) => {
 
   const handleSelectedSizeChange = (value) => {
     if (!variant) {
+      switch (value) {
+        case 0:
+          setDemosDesktop(DEMOS.filter(demo => demo.type === selectedPricingDesktop && demo.id !== 66))
+          break
+        case 1:
+          setDemosDesktop(DEMOS.filter(demo => demo.type === selectedPricingDesktop && demo.id !== 66 && demo.id !== 65))
+          break
+      }
       updateSelectedSizeDesktop(value)
     } else {
+      switch (value) {
+        case 0:
+          setDemosMobile(DEMOS.filter(demo => demo.type === selectedPricingMobile))
+          break
+        case 2:
+          setDemosMobile(DEMOS.filter(demo => demo.type === selectedPricingMobile && demo.id !== 66))
+          break
+      }
       updateSelectedSizeMobile(value)
     }
   }
@@ -91,12 +107,10 @@ const PreviewPage = ({variant}) => {
       switch (selectedSizeDesktop) {
         case 0:
           if (!selectedDemo.link300x600) return
-          setDemosDesktop(DEMOS.filter(demo => demo.type === selectedPricingDesktop && demo.id !== 66))
           setDesktopDemoLink('300x600.html?demoid=' + getDemoId(selectedDemo.link300x600))
           break
         case 1:
           if (!selectedDemo.link970x250) return
-          setDemosDesktop(DEMOS.filter(demo => demo.type === selectedPricingDesktop && demo.id !== 66 && demo.id !== 65))
           setDesktopDemoLink('970x250.html?demoid=' + getDemoId(selectedDemo.link970x250))
           break
       }
@@ -104,12 +118,10 @@ const PreviewPage = ({variant}) => {
       switch (selectedSizeMobile) {
         case 0:
           if (!selectedDemo.link300x600) return
-          setDemosMobile(DEMOS.filter(demo => demo.type === selectedPricingMobile))
           setMobileDemoLink('300x600-mobile.html?demoid=' + getDemoId(selectedDemo.link300x600))
           break
         case 2:
           if (!selectedDemo.link300x250) return
-          setDemosMobile(DEMOS.filter(demo => demo.type === selectedPricingMobile && demo.id !== 66))
           setMobileDemoLink('300x250.html?demoid=' + getDemoId(selectedDemo.link300x250))
           break
       }
