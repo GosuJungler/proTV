@@ -1,135 +1,283 @@
-<!doctype html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-  >
-  <meta
-    http-equiv="X-UA-Compatible"
-    content="ie=edge"
-  >
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    .container::-webkit-scrollbar {
+    ::-webkit-scrollbar {
       display: none;
     }
-    html {
+    body{
+      margin:0;
     }
-    body {
-      margin: 0;
-    }
-    .header {
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
-    .body {
-      width: 100%;
-      position: relative;
-      z-index: 1;
-      margin-top: 150%;
-    }
-    smoplotag {
-      /*display: flex!important;*/
-      /*justify-content: center;*/
-    }
-    html::-webkit-scrollbar {
+    .phoneImage{
       display: none;
     }
-    .overall-con {
-      /*position: relative;*/
-      /*display: flex;*/
-      /*justify-content: center;*/
-      /*align-items: center;*/
+    somplotag {
+      margin: 0 auto !important;
     }
-    .container {
-      /*position: fixed;*/
-      /*top: 13.5vh;*/
-      /*height: 79.5%;*/
-      /*width: 20.2vw;*/
-      /*margin: 0 auto;*/
-      /*overflow-y: scroll;*/
-      /*border-bottom-left-radius: 10%;*/
-      /*border-bottom-right-radius: 10%;*/
+    @media only screen and (min-width: 600px) {
+      .overall-con{
+        text-align: center;
+        margin: 0 auto;
+        width: 100vw;
+        position: relative;
+        height: 100vh;
+      }
+      .phoneImage{
+        width: auto;
+        display: block;
+        height: 100%;
+        margin: 0 auto;
+      }
+      .container{
+        
+        position: absolute;
+        top: 14%;
+        width: 41vh;
+        height: 71%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        
+      }
+      #somploTag{
+        position: relative;
+        left: calc(50% - 150px);
+        transform-origin: center top;
+        width: fit-content;
+        pointer-events: all;
+      }
     }
-    #somploTag {
-      position: fixed;
-      top: 168px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70% !important;
-      display: block;
-      margin: 0 auto;
-    }
-  
   </style>
 </head>
 <body>
-
 <div class="overall-con">
+  
+  <img class="phoneImage" src="https://cdn.somplo.com/tests/svg/svg-mobile/phone.svg"/>
   <div class="container">
-    <img class="header" src="assets/300x600-mobile-header.png">
-    <div id="somploTag" style="
-
-    ">
-      <smoplotag tagid='%%tag_id%%' width="300" height="600" prop='none' type='banner' autoexpand="false"
-                 prod='true' tagtype='js' clickMacro='' close_Button='false' imp='' clickUrl='' platform=''
-                 CACHEBUSTER='%%CACHEBUSTER%%' style="width: 100%!important;">
-        <script>
-          function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, '\\$&');
-            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-              results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-          }
-          
-          document.querySelector('smoplotag').setAttribute('tagid', '219623495');
-        
-        </script>
-        <script src='https://cdn.somplo.com/prod/test/251119/new-tag.min.js?cb=8'></script>
-      </smoplotag>
+    <style>
+      
+      body {
+        position: relative;
+        font-family: Helvetica;
+      }
+      
+      .img-bottom, .img-top {
+        display: block;
+        z-index: 100;
+        width: inherit;
+      }
+      
+      .mobile-monitor__scroll-down img {
+        transform: rotate(-90deg);
+        width: 18px;
+        margin-left: 10px;
+      }
+      
+      .mobile-monitor__scroll-down {
+        z-index: 200;
+        padding: 0 10px;
+        height: 46px;
+        width: 120px;
+        justify-content: space-around;
+        transform: rotate(90deg) scaleY(-1) ;
+      }
+      
+      .scroll-down div {
+        transform:  scaleX(-1) scaleY(-1);
+      }
+      @media (max-width: 320px) {
+        .container #somploTag {
+          transform-origin: top left !important;
+          position: relative;
+          left: 15px;
+        }
+        .container .hole {
+          height: 475px !important;
+        }
+        .container #somploTagContainer {
+          top: 7% !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .scroll-container {
+          position: relative !important;
+          overflow-y: scroll;
+          width: fit-content;
+          height: inherit;
+        }
+        .hole {
+          height: 720px !important;
+        }
+        .img-bottom,.img-top {
+          width: 100%;
+        }
+        #somploTagContainer {
+          top: 13% !important;
+          width: 100% !important;
+        }
+        #somploTag {
+          width: 300px;
+          margin: 0 auto;
+          transform-origin: center top;
+        }
+      }
+      
+      #somploTagContainer {
+        transform-origin: top;
+        position: fixed;
+        top: 20%;
+        width: inherit;
+        pointer-events: none;
+      }
+      #scrollContainer {
+        position: fixed;
+        top: 21%;
+        left: calc(50% - 150px);
+        z-index: 1;
+      }
+      .scroll-down {
+        line-height: 14px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #c80b0b;
+        height: 45px;
+        width: 138px;
+        left: -42px;
+        top: 149px;
+        font-weight: bold;
+        z-index: 10001;
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        display: flex;
+        cursor: pointer;
+        animation: bounce2 2s ease infinite;
+      }
+      .scroll-container {
+        position: fixed;
+        overflow-y: scroll;
+        width: inherit;
+        height: inherit;
+      }
+      
+      @keyframes bounce2 {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0) rotate(90deg);}
+        40% {transform: translateY(-30px) rotate(90deg);}
+        60% {transform: translateY(-15px) rotate(90deg);}
+      }
     
+    </style>
+    <div
+      class="scroll-container container-scroll_js"
+    >
+      <div class="mobile-monitor__scroll-down scroll-down " style="visibility: hidden; pointer-events: none">
+        <div>Scroll Down</div>
+        <img src="assets/sd.png" alt="" />
+      </div>
+      
+      <img class="img-top" style="position: relative;z-index: 10000;" src="assets/300x600-mobile-header.png" width="100%">
+      
+      <div id="somploTagContainer">
+        <div id="somploTag" style="text-align: center;">
+          <smoplotag
+            style="margin: 0 auto;"
+            tagid='%%tag_id%%'
+            width='300'
+            height='600'
+            prop='none'
+            type='banner'
+            autoexpand="false"
+            prod='true'
+            tagtype='js'
+            clickMacro=''
+            close_Button='false'
+            imp=''
+            clickUrl=''
+            platform=''
+            CACHEBUSTER='%%CACHEBUSTER%%'
+            style='height:558px !important;width:300px;'>
+            <script>
+              function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                  results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+              }
+              
+              document.querySelector('smoplotag').setAttribute('tagid','219623495');
+            
+            </script>
+            <script src='https://cdn.somplo.com/prod/test/251119/new-tag.min.js?cb=8'></script>
+        </div>
+      </div>
+      <div class="hole" style="height: 60vh;"></div>
+      <script>
+        
+        
+        var scroll = document.querySelector('.scroll-down');
+        var container = document.querySelector('.container-scroll_js');
+        var destination = document.querySelector('#scrollTo');
+        scroll.addEventListener('click',(e)=>{
+          var offset = 40;
+          if (window.innerWidth > 1200 ) {
+            offset = 60;
+          }
+          if (window.innerWidth < 320 ) {
+            offset = 47;
+          }
+          container.scroll({
+            top: destination.offsetTop - offset,
+            behavior: "smooth",
+          });
+          document.body.scroll({
+            top: destination.offsetTop - offset,
+            behavior: "smooth",
+          });
+        })
+        var finel = 1;
+        
+        var sizeDiff;
+        function getScale(isGetScaleAgain = false, force){
+          sizeDiff = publisher_config.width / 375;
+          finel = document.querySelector('.container').offsetWidth / publisher_config.width * 100;
+          finel = finel * sizeDiff;
+          var somploTag = document.getElementById('somploTag');
+          if (window.innerWidth <= 600 ) { // Replace "yourElementId" with the actual element's ID or select it in another way
+            
+            // Define the scaling factor based on the window width and the element's original width
+            const windowWidth = window.innerWidth;
+            const originalWidth = somploTag.clientWidth; // Get the element's current width
+            
+            // Calculate the scaling factor
+            const scaleX = windowWidth / originalWidth;
+            
+            // Apply the scaling to the element
+            somploTag.style.transform = `scaleX(${scaleX})`; // Scale only along the X-axis
+            
+            // To maintain the same aspect ratio, you can also scale the Y-axis by the same factor
+            somploTag.style.transform = `scale(${scaleX - 0.1}, ${scaleX - 0.1})`;
+            return
+          }
+          somploTag.style.transform = "scale("+ finel * 0.009 + ")";
+        }
+        getScale(false,true);
+        window.addEventListener("resize", getScale);
+      </script>
+      
+      
+      
+      
+      
+      <img class="img-bottom" src="assets/mobile-body.png" style="position: relative;z-index: 10000;" width="100%">
     </div>
-    <img class="body" src="assets/mobile-body.png">
   </div>
 </div>
-
-<script>
-  
-  var finel = 1;
-  function getScale(shouldnduseAgain = false){
-    const somploTagContainerEl = document.querySelector('#somploTag')
-    // we check by this element current creative size
-    if (somploTagContainerEl.offsetWidth <= publisher_config.width) {
-      // we check is element less than creative size
-      
-      finel = somploTagContainerEl.offsetWidth / publisher_config.width * 100;
-      // calculating size difference and set factor
-      
-      document.getElementById('somploTag').style.transform = "scale("+ finel * 0.01 + ")";
-      document.getElementById('somploTag').style.transformOrigin = "left top";
-      document.getElementById('somploTag').style.right = "0";
-      document.getElementById('somploTag').style.left = "0";
-      document.getElementById('somploTag').style.margin = "90px auto 0";
-      
-      somploTagContainerEl.style.width = "92%";
-      // width can be different for other sizes, it depends on UI of demo
-      
-      if (!shouldnduseAgain) {
-        setTimeout(function () {
-          getScale(true);
-        }, 500)
-      }
-    } else {
-    }
-  }
-  getScale();
-  window.addEventListener("resize", getScale);
-</script>
 </body>
 </html>
