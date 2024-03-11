@@ -238,7 +238,7 @@ const PreviewPage = ({variant}) => {
             <div className={`${classes.previewWrapper} ${variant ? classes.previewWrapperMobile : ''}`}>
               <div className={!variant ? classes.desktopBlock : classes.mobileBlock}>
                 <img
-                  className={classes.desktopImage}
+                  className={!variant ? classes.desktopImage : classes.mobileImageBl}
                   src={!variant ? desktopImage : mobileImage}
                   alt=""
                 />

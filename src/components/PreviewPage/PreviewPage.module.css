@@ -97,7 +97,10 @@
     position: relative;
 }
 .desktopImage {
-    width: 100%;
+    width: 735px;
+}
+.mobileImageBl {
+    width: 269.5px;
 }
 .mobileBlock {
     max-width: 735px;
@@ -172,17 +175,17 @@
 }
 .desktopIframe {
     position: absolute;
-    top: 5.3%;
-    left: 11.1%;
-    width: 77.8%;
-    height: 78%;
+    top: 24.5px;
+    left: 81.5px;
+    width: 571.5px;
+    height: 360px;
 }
 .mobileIframe {
     position: absolute;
-    top: 14.2%;
-    left: 4.7%;
-    width: 90.2%;
-    height: 83%;
+    top: 77px;
+    left: 12px;
+    width: 245px;
+    height: 458px;
     border-bottom-left-radius: 9%;
     border-bottom-right-radius: 9%;
 }
