@@ -187,7 +187,7 @@
     border-bottom-right-radius: 9%;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1700px) {
     .templateTypeButton {
         font-size: 37px;
     }
