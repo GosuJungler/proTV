@@ -46,9 +46,9 @@
     }
     .container {
       position: fixed;
-      top: 13.5vh;
-      height: 79.5%;
-      width: 20.2vw;
+      top: 104px;
+      height: 613px;
+      width: 329px;
       margin: 0 auto;
       overflow-y: scroll;
       border-bottom-left-radius: 10%;
@@ -57,7 +57,7 @@
     #somploTag {
       width: 15.7vw;
       position: fixed;
-      top: 150px;
+      top: 168px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -69,7 +69,7 @@
 <div class="overall-con">
   <img src="assets/mobile.png" style="width: auto; height: 95vh; ">
   <div class="container">
-    <img class="header" src="./assets/300x600-mobile-header.png">
+    <img class="header" src="assets/300x600-mobile-header.png">
     <div id="somploTag" style="
 
     ">
@@ -94,7 +94,7 @@
       </smoplotag>
     
     </div>
-    <img class="body" src="./assets/mobile-body.png">
+    <img class="body" src="assets/mobile-body.png">
   </div>
 </div>
 
@@ -110,14 +110,9 @@
       finel = somploTagContainerEl.offsetWidth / publisher_config.width * 100;
       // calculating size difference and set factor
       
-      document.getElementById('somploTag').style.transform = "scale("+ finel * 0.01 + ")";
+      document.getElementById('somploTag').style.transform = "scale("+ finel * 0.01 + ") translateX(-50%)";
       document.getElementById('somploTag').style.transformOrigin = "left top";
-      document.getElementById('somploTag').style.right = "0";
-      document.getElementById('somploTag').style.left = "0";
-      document.getElementById('somploTag').style.margin = "90px auto 0";
       
-      somploTagContainerEl.style.width = "92%";
-      // width can be different for other sizes, it depends on UI of demo
       
       if (!shouldnduseAgain) {
         setTimeout(function () {

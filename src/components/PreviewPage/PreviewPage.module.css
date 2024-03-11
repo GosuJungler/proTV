@@ -187,6 +187,11 @@
     border-bottom-right-radius: 9%;
 }
 
+@media screen and (max-width: 1500px) {
+    .templateTypeButton {
+        font-size: 37px;
+    }
+}
 
 @media screen and (max-width: 1200px) {
     .title {
